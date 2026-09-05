@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+:root {
+  --font-mono: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", "Menlo", "Monaco", "Consolas", monospace;
+  --accent-primary: #06d6a0;
+  --accent-secondary: #00b4d8;
+  --accent-tertiary: #9b5de5;
+  --surface-0: #060a10;
+  --surface-1: rgba(8, 14, 24, 0.85);
+  --surface-2: rgba(12, 20, 34, 0.7);
+  --glass-bg: rgba(8, 14, 24, 0.75);
+  --glass-border: rgba(6, 214, 160, 0.12);
+  --buyer-color: #00b4d8;
+  --seller-color: #ff6b35;
+  --accept-color: #06d6a0;
+  --reject-color: #ef233c;
+  --grid-color: rgba(6, 214, 160, 0.04);
+}
+
+/* Global base */
+body {
+  background: var(--surface-0);
+  font-feature-settings: "ss01", "ss02", "cv01";
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(6, 214, 160, 0.2);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(6, 214, 160, 0.4);
+}
+
+/* Glassmorphism — agent panel look */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px) saturate(1.2);
+  -webkit-backdrop-filter: blur(20px) saturate(1.2);
+  border: 1px solid var(--glass-border);
+}
+
+/* Gradient border with animated sweep */
+.gradient-border {
+  position: relative;
+  border-radius: 1rem;
+}
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary), var(--accent-tertiary));
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  pointer-events: none;
+}
+
+/* Neon glow pulse */
+@keyframes neon-pulse {
+  0%, 100% { box-shadow: 0 0 12px rgba(6, 214, 160, 0.08), 0 0 40px rgba(6, 214, 160, 0.04); }
+  50% { box-shadow: 0 0 20px rgba(6, 214, 160, 0.15), 0 0 60px rgba(6, 214, 160, 0.08); }
+}
+.animate-neon-pulse {
+  animation: neon-pulse 4s ease-in-out infinite;
+}
+
+/* Slide in from left */
+@keyframes slide-in-left {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+.animate-slide-left {
+  animation: slide-in-left 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Slide in from right */
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+.animate-slide-right {
+  animation: slide-in-right 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Fade in up */
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up {
+  animation: fade-in-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Float */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+/* Subtle grid background — command-center feel */
+.mesh-gradient {
+  background-color: var(--surface-0);
+  background-image:
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px),
+    radial-gradient(ellipse at 15% 50%, rgba(6, 214, 160, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 15%, rgba(0, 180, 216, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 85%, rgba(155, 93, 229, 0.03) 0%, transparent 50%);
+  background-size: 60px 60px, 60px 60px, 100% 100%, 100% 100%, 100% 100%;
+}
+
+/* Scanline overlay for panels */
+.scanline-overlay {
+  position: relative;
+  overflow: hidden;
+}
+.scanline-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(6, 214, 160, 0.015) 2px,
+    rgba(6, 214, 160, 0.015) 4px
+  );
+  pointer-events: none;
+}
+
+/* Status indicator dot animation */
+@keyframes status-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+.animate-status-blink {
+  animation: status-blink 1.5s ease-in-out infinite;
+}
+
+/* Data stream line animation */
+@keyframes data-stream {
+  from { background-position: 0% 0%; }
+  to { background-position: 200% 0%; }
+}
+.animate-data-stream {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(6, 214, 160, 0.1) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: data-stream 3s linear infinite;
+}
+
+/* Terminal cursor blink */
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.animate-cursor {
+  animation: cursor-blink 1s step-end infinite;
+}

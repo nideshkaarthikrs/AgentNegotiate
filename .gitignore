@@ -1,0 +1,55 @@
+# Dependencies
+node_modules/
+.venv/
+__pycache__/
+*.egg-info/
+*.pyc
+*.pyo
+
+# Environment
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Databases
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+
+# Build
+.next/
+out/
+dist/
+build/
+*.tsbuildinfo
+
+# Lock files
+package-lock.json
+uv.lock
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Testing
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+coverage.xml
+
+# Misc
+*.log
+*.bak
+*.tmp
