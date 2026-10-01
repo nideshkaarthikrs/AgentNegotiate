@@ -2,7 +2,7 @@
 
 **Two-agent B2B procurement negotiation system** built with LangGraph, Gemini (with a Groq fallback), and Razorpay.
 
-> Built for a buildathon — demonstrating AI-powered autonomous procurement with deterministic financial guardrails.
+> Autonomous AI-powered procurement system with deterministic financial guardrails.
 
 ## Architecture
 
